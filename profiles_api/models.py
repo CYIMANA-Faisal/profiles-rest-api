@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin,BaseUs
 
 
 class UserProfileManage(BaseUserManager):
-    """Manageer for user profiles"""
+    """Manager for user profiles"""
     def create_user(self, name, email, password=None):
         """create new user profile"""
         if not email:
