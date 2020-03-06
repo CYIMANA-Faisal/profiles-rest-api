@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
-
+from rest_framework import filters
 from . import serializers, models, permissions
 
 
@@ -80,7 +80,7 @@ class HelloViewset(viewsets.ViewSet):
         # handle update part of an object
         return Response({'method':'PATCH'})
 
-    def destroy(self, request, pk=None):
+    def destroy(self, request, pk=None): 
         # handle deletion of an object
         return Response({'method': 'DELETE'})
 
@@ -90,5 +90,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = models.UserProfile.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateOwnProfile,)
-
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name', 'email',)
 
