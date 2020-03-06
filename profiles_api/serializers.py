@@ -22,6 +22,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         user = models.UserProfile.objects.create_user(
             email = validated_data['email'],
             name = validated_data['name'],
-            password = validated_data['password']
+            password= validated_data['password']
         )
         return user
